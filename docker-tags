@@ -1,0 +1,7 @@
+#!/bin/bash
+
+NAME=$1
+if [[ ! "${NAME}" =~ "/" ]]; then
+    NAME="library/${NAME}"
+fi
+curl -s "https://registry.hub.docker.com/v2/repositories/${NAME}/tags/?page_size=1000" | sed -e 's/,/,\n/g' -e 's/\[/\[\n/g' | grep '"name"' | awk -F\" '{print $4;}'

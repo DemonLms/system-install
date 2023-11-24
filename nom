@@ -1,0 +1,18 @@
+#!/bin/bash
+
+function Usage(){
+cat << HELP
+
+Usage: nom <version>
+
+Example:
+    nom node-v18.19.0-x64
+    nom node-v20.10.0-x64
+HELP
+}
+
+if [ -z "$1" ]; then
+    Usage
+else
+    ln -snf ~/Software/"$1" ~/Software/node
+fi
