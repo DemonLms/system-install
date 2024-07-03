@@ -1,5 +1,7 @@
 #!/bin/bash
 
+SOFTWARE_HOME=~/Software
+
 function Usage(){
 cat << HELP
 
@@ -11,8 +13,23 @@ Example:
 HELP
 }
 
+function List(){
+ls "${SOFTWARE_HOME}" | grep -E "go.+"
+}
+
 if [ -z "$1" ]; then
     Usage
-else
-    ln -snf ~/Software/"$1" ~/Software/go
+    exit 0
 fi
+
+case "$1" in
+"-h"|"--help")
+    Usage
+;;
+"-l"|"--list")
+    List
+;;
+*)
+    ln -snf "${SOFTWARE_HOME}/$1" "${SOFTWARE_HOME}/go"
+    go version
+esac
