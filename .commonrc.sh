@@ -24,6 +24,9 @@ export NODE_CACHE=$NODE_HOME/node_cache
 export NODE_REGISTRY="https://registry.npmmirror.com"
 export PATH=$NODE_HOME/bin:$NODE_PREFIX/bin:$PATH
 
+# Rust
+source ~/.cargo/env
+
 # Brew
 export HOMEBREW_INSTALL_FROM_API=1
 export HOMEBREW_API_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles/api"
