@@ -1,9 +1,9 @@
 export PATH=~/.bin:$PATH
 
 # Java
-export JAVA_HOME=~/Software/jdk/Contents/Home
-export CLASSPATH=.:$JAVA_HOME/lib:$JAVA_HOME/lib/tools.jar
-export PATH=$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$PATH
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+export CLASSPATH=.:$JAVA_HOME/lib
+export PATH=$JAVA_HOME/bin:$PATH
 
 # Maven
 export MAVEN_HOME=~/Software/apache-maven-3.6.3

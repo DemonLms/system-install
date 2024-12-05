@@ -32,4 +32,7 @@ case "$1" in
 *)
     ln -snf "${SOFTWARE_HOME}/$1" "${SOFTWARE_HOME}/node"
     node --version
+    npm config -g set prefix $NODE_PREFIX
+    npm config -g set cache $NODE_CACHE
+    npm config -g set registry $NODE_REGISTRY
 esac

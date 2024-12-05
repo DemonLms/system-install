@@ -7,11 +7,11 @@ PKG=""
 if apt -v > /dev/null ; then
   PKG="apt"
   cat > /etc/apt/sources.list << EOF
-deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ noble main restricted universe multiverse
-deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ noble-updates main restricted universe multiverse
-deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ noble-backports main restricted universe multiverse
+deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy main restricted universe multiverse
+deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-updates main restricted universe multiverse
+deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-backports main restricted universe multiverse
 
-deb http://security.ubuntu.com/ubuntu/ noble-security main restricted universe multiverse
+deb http://security.ubuntu.com/ubuntu/ jammy-security main restricted universe multiverse
 EOF
   ${SUDO} apt update
 elif yum -v > /dev/null ; then
@@ -23,10 +23,10 @@ elif yum -v > /dev/null ; then
     /etc/yum.repos.d/CentOS-*.repo
 fi
 
-${SUDO} ${PKG} install -y git vim zsh gcc make curl wget tmux
+${SUDO} ${PKG} install -y git vim zsh gcc make curl wget tmux wireguard wireguard-tools openresolv openjdk-11-jdk
 
 mkdir -p ~/Documents ~/Downloads ~/Software ~/Workspace ~/.bin
-cp gom nom docker-tags ~/.bin
+cp gom nom docker-tags vpn ~/.bin
 cp .commonrc.sh .tmux.conf .vimrc ~
 source ~/.commonrc.sh
 
@@ -40,6 +40,9 @@ wget https://nodejs.org/dist/v18.20.4/node-v18.20.4-linux-x64.tar.gz
 tar -xf node-v18.20.4-linux-x64.tar.gz && mv node-v18.20.4-linux-x64 ~/Software
 nom node-v18.20.4-linux-x64
 
+wget https://archive.apache.org/dist/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
+tar -xf apache-maven-3.6.3-bin.tar.gz && mv apache-maven-3.6.3 ~/Software
+
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 source "$HOME/.cargo/env"
 
@@ -49,3 +52,5 @@ git clone --depth=1 https://github.com/jiangmiao/auto-pairs.git ~/.vim/pack/vend
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 echo 'source ~/.commonrc.sh' >> ~/.zshrc
+
+echo "Success."
