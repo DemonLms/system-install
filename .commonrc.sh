@@ -11,11 +11,11 @@ export PATH=$PATH:$MAVEN_HOME/bin
 
 # Go
 export GOROOT=~/Software/go
-export GOPAHT=~/go
+export GOPATH=~/go
 export GO111MODULE=auto
 export GOPROXY="https://goproxy.io,direct"
 export GOPRIVATE=""
-export PATH=$GOROOT/bin:$GOPAHT/bin:$PATH
+export PATH=$GOROOT/bin:$GOPATH/bin:$PATH
 
 # Node
 export NODE_HOME=~/Software/node
